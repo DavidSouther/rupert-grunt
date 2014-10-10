@@ -48,3 +48,9 @@ MEAN is an acronym for the MEAN stack. There are many impementations of the MEAN
 ## Cookbook
 
 ### TDD
+
+
+## Changelog
+
+* **0.0.2** *2014-10-10* Runs feature tests.
+* **0.0.1** *2014-10-9* Runs client and server tests.
