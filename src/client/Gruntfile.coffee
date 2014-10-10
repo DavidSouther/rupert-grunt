@@ -71,6 +71,7 @@ module.exports = (grunt, config)->
                         'node_modules/rupert-grunt/node_modules/' +
                             'mockasing/src/tools/*'
 
+                        'src/client/tools/**'
                         'src/client/**/*mock.coffee'
 
                         testFileOrdering
@@ -116,7 +117,7 @@ module.exports = (grunt, config)->
                 'fonts/ionicons.eot'
                 'fonts/ionicons.woff'
             ].forEach (font)->
-                root = './node_modules/ng-stassets/node_modules/ionic/release/'
+                root = './node_modules/rupert/node_modules/ionic/release/'
                 grunt.file.copy root + font, './www/' + font
 
         writeFiles = ->

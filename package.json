@@ -32,6 +32,7 @@
     "grunt-coffeelint": "0.0.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.10.0",
+    "grunt-karma": "^0.9.0",
     "grunt-recurse": "^0.2.1",
     "karma-chrome-launcher": "^0.1.5",
     "karma-coffee-preprocessor": "^0.2.1",
@@ -41,8 +42,9 @@
     "karma-mocha": "^0.1.9",
     "karma-sinon-chai": "^0.2.0",
     "karma-spec-reporter": "0.0.13",
-    "mockasing": "0.0.2",
+    "mockasing": "0.0.3",
     "q": "^1.0.1",
+    "qcumberbatch": "^0.2.1",
     "superagent": "^0.20.0"
   }
 }

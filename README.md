@@ -8,7 +8,7 @@ rupert development toolchain and library.
 1. Create a new project.
   1. On Github, set the name and description. Generate a Readme and license.
 1. Clone the project from GitHub.
-1. Run `npm init ; npm i --save rupert ; npm i --save-dev rupert-grunt`.
+1. Run `npm init ; npm i --save rupert ; npm i --save-dev grunt rupert-grunt`.
   1. While npm is smart in initialization, you can set a name, etc in your [npmrc][npmrc]
 1. Run `cp node_modules/rupert-grunt/plain/* .` (See [the source directory here][plain_folder]).
   1. Edit the `name` field in `./server.json`.

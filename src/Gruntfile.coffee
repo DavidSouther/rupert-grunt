@@ -1,6 +1,5 @@
 Path = require 'path'
 module.exports = (grunt, config = {})->
-    config.server
 
     require('grunt-recurse')(grunt, __dirname)
 
@@ -45,7 +44,10 @@ module.exports = (grunt, config = {})->
             options:
                 npm: no
 
+    base = process.cwd()
+    grunt.file.setBase base, 'node_modules', 'rupert-grunt'
     grunt.finalize()
+    grunt.file.setBase base
 
     grunt.registerTask 'test',
         'Run all non-component tests.',
