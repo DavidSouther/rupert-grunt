@@ -1,23 +1,23 @@
-ng-stassets-grunt
+rupert-grunt
 =================
 
-ng-stassets development toolchain and library.
+rupert development toolchain and library.
 
 ## Starting a new project
 
 1. Create a new project.
-  1. On Githug, set the name and description. Generate a Readme and license.
+  1. On Github, set the name and description. Generate a Readme and license.
 1. Clone the project from GitHub.
-1. Run `npm init ; npm i --save ng-stassets ; npm i --save-dev ng-stassets-grunt`.
+1. Run `npm init ; npm i --save rupert ; npm i --save-dev rupert-grunt`.
   1. While npm is smart in initialization, you can set a name, etc in your [npmrc][npmrc]
-1. Run `cp node_modules/ng-stassets-grunt/plain/* .` (See [the source directory here][plain_folder]).
+1. Run `cp node_modules/rupert-grunt/plain/* .` (See [the source directory here][plain_folder]).
   1. Edit the `name` field in `./server.json`.
 1. Add npm scripts:
   1. `"start": "node ./app.js"`
   1. `"test": "./node_modules/.bin/grunt"`
 
 [npmrc]: https://www.npmjs.org/doc/misc/npm-config.html#config-settings
-[plain_folder]: https://github.com/DavidSouther/ng-stassets-grunt/tree/master/plain
+[plain_folder]: https://github.com/DavidSouther/rupert-grunt/tree/master/plain
 
 ## Project Layout
 
@@ -33,9 +33,9 @@ Built from two and a half years experience with Angular, and nearly a decade of 
 
 [`stassets`](https://github.com/DavidSouther/stassets) is a compiling express middleware. When you first start the Node project, stassets scans its `root` directory for your project files (by default, Angular controller, services, directives, templates, styles, etc). Whenever those files change, stassets compiles them, storing the generated `index.html`, `vendors.js`, `application.js`, etc files in memory. When your browser requests those files, it always has the most up to date version of the development library. This approach allows for extremely rapid iteration when developing.
 
-### ng-stassets
+### rupert
 
-[`ng-stassets`](https://github.com/DavidSouther/ng-stassets) is an express server configured to use `stassets`. It can also be configured to attach your custom API endpoints, use TLS authentication (including generating a development certificate on the fly), and configure [socket.io](http://socket.io/) for realtime data.
+[`rupert`](https://github.com/DavidSouther/ng-stassets) is an express server configured to use `stassets`. It can also be configured to attach your custom API endpoints, use TLS authentication (including generating a development certificate on the fly), and configure [socket.io](http://socket.io/) for realtime data.
 
 ### MEAN
 
