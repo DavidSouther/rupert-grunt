@@ -13,9 +13,6 @@ module.exports = (grunt, config)->
                 tasks: [
                     'testServer'
                 ]
-                options:
-                    spawn: false
-
 
     grunt.registerTask 'testServer', 'Test the server.', ['mochaTest:server']
 

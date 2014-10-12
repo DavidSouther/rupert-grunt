@@ -15,11 +15,7 @@ module.exports = (grunt, config)->
                 files: [
                     'src/client/**'
                 ]
-                tasks: [
-                    'client'
-                ]
-                options:
-                    spawn: false
+                tasks: [ 'client' ]
 
     # butt - Browser Under Test Tools
     butt = []

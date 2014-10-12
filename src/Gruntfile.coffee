@@ -25,8 +25,7 @@ module.exports = (grunt, config = {})->
                 jshintrc: '.jshintrc'
             files: [
                 'src/**/*.js'
-                '!src/client/d3/**'
-            ]
+            ].concat(config.jshint?.files or [])
 
         coffeelint:
             options:
@@ -36,13 +35,38 @@ module.exports = (grunt, config = {})->
                 'src/**/*.coffee'
                 'Gruntfile.coffee'
             ]
-
         clean:
             all:
-                [ 'build/' ]
-        release:
+                [
+                    'build/'
+                    'www/'
+                    '*.log'
+                ]
+    grunt.Config =
+        watch:
+            lint:
+                files: [
+                    grunt.Config.jshint.files.concat(
+                        grunt.Config.coffeelint.files
+                    )
+                ]
+                tasks: [
+                    'linting'
+                ]
             options:
-                npm: no
+                spwan: no
+        # release:
+        #     options:
+        #         npm: no
+        concurrent:
+            watchers: [
+                'watch:lint'
+                'watch:client'
+                'watch:server'
+                # 'watch:features'
+            ]
+            options:
+                logConcurrentOutput: yes
 
     base = process.cwd()
     grunt.file.setBase base, 'node_modules', 'rupert-grunt'
@@ -67,13 +91,14 @@ module.exports = (grunt, config = {})->
             'clean:all'
             'linting'
             'client'
-            'features'
+            'server'
+            # 'features'
         ]
 
     grunt.registerTask 'rupert-watch',
         'Have Rupert begin watching all files.',
         [
-            'watchClient'
+            'concurrent:watchers'
         ]
 
     grunt.registerTask 'rupert-default',
