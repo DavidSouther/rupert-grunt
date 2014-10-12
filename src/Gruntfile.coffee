@@ -43,6 +43,10 @@ module.exports = (grunt, config = {})->
                     '*.log'
                 ]
     grunt.Config =
+        notify:
+            linting:
+                options:
+                    message: 'Linting Complete.'
         watch:
             lint:
                 files: [
@@ -52,6 +56,7 @@ module.exports = (grunt, config = {})->
                 ]
                 tasks: [
                     'linting'
+                    'notify:linting'
                 ]
             options:
                 spwan: no

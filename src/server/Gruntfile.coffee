@@ -7,11 +7,16 @@ module.exports = (grunt, config)->
                 options:
                     reporter: 'spec'
                 src: testFiles
+        notify:
+            linting:
+                options:
+                    message: 'Server Tests Complete.'
         watch:
             server:
                 files: testFiles
                 tasks: [
                     'testServer'
+                    'notify:server'
                 ]
 
     grunt.registerTask 'testServer', 'Test the server.', ['mochaTest:server']

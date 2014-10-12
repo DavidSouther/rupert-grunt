@@ -4,11 +4,18 @@ module.exports = (grunt, config)->
     process.env.SELENIUM_BROWSER = process.env.SELENIUM_BROWSER || 'chrome'
 
     grunt.Config =
+        notify:
+            feature:
+                options:
+                    message: 'Feature Tests Complete.'
         watch:
             features:
                 files: features
             tasks:
-                [ 'features' ]
+                [
+                    'features'
+                    'notify:feature'
+                ]
         cucumber:
             integration:
                 files:

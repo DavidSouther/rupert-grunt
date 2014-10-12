@@ -10,12 +10,19 @@ module.exports = (grunt, config)->
     testFileOrdering = grunt.expandFileArg('src/client', '**/')
 
     grunt.Config =
+        notify:
+            client:
+                options:
+                    message: 'Client Tests Complete.'
         watch:
             client:
                 files: [
                     'src/client/**'
                 ]
-                tasks: [ 'client' ]
+                tasks: [
+                    'client'
+                    'notify:client'
+                ]
 
     # butt - Browser Under Test Tools
     butt = []
@@ -132,6 +139,7 @@ module.exports = (grunt, config)->
         [
             'writeClient'
             'karma:client'
+            'notify:client'
         ]
 
     grunt.registerTask 'client',
