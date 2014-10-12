@@ -1,6 +1,6 @@
 {
   "name": "rupert-grunt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "rupert development toolchain and library.",
   "main": "src/Gruntfile.coffee",
   "scripts": {
