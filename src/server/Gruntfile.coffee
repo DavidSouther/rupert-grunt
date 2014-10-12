@@ -16,12 +16,6 @@ module.exports = (grunt, config)->
                 options:
                     spawn: false
 
-    grunt.registerTask 'client-server-launch', ->
-        done = @async()
-        # process.argv = 'node app.js --api'.split ' '
-        require(config.server)
-        # process.env.APP_ROOT = 'https://dol-test.dataonline.com:8443/'
-        setTimeout done, 5e3
 
     grunt.registerTask 'testServer', 'Test the server.', ['mochaTest:server']
 

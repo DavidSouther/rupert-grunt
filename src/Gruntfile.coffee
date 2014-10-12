@@ -70,6 +70,12 @@ module.exports = (grunt, config = {})->
             'features'
         ]
 
+    grunt.registerTask 'rupert-watch',
+        'Have Rupert begin watching all files.',
+        [
+            'watchClient'
+        ]
+
     grunt.registerTask 'rupert-default',
         'Perform all Prepare and Test tasks.',
         [ 'base' ]

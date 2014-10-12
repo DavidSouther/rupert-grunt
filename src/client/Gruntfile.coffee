@@ -13,24 +13,13 @@ module.exports = (grunt, config)->
         watch:
             client:
                 files: [
-                    'src/client/**/*.js'
-                    'src/client/**/*.coffee'
-                    'src/client/**/*.jade'
-                    'src/client/**/*.styl'
+                    'src/client/**'
                 ]
                 tasks: [
                     'client'
                 ]
                 options:
                     spawn: false
-        copy:
-            client:
-                files: [
-                    expand: true
-                    cwd: 'src/client'
-                    src: ['index.html', 'assets/**/*']
-                    dest: 'build/client'
-                ]
 
     # butt - Browser Under Test Tools
     butt = []
@@ -41,7 +30,6 @@ module.exports = (grunt, config)->
             butt = ['Firefox']
         else
             butt = ['Chrome']
-
 
     preprocessors =
         'src/client/**/*test.coffee': [ 'coffee' ]
@@ -137,6 +125,11 @@ module.exports = (grunt, config)->
 
         require(config.server)
         setTimeout writeFiles, 4000
+
+    grunt.registerTask 'watchClient',
+        [
+            'watch:client'
+        ]
 
     grunt.registerTask 'testClient',
         'Run karma tests against the client.',
