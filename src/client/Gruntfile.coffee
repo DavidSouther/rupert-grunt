@@ -101,22 +101,11 @@ module.exports = (grunt, config)->
                 defer.resolve()
             defer.promise
 
-        copyFiles = ->
-            [
-                'fonts/ionicons.ttf'
-                'fonts/ionicons.svg'
-                'fonts/ionicons.eot'
-                'fonts/ionicons.woff'
-            ].forEach (font)->
-                root = './node_modules/rupert/node_modules/ionic/release/'
-                grunt.file.copy root + font, './www/' + font
-
         writeFiles = ->
             pass = true
             process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
             grunt.verbose.writeln 'Stassets compiled all files!'
             promises = options.files.map getFile
-            copyFiles()
             Q.all(promises)
             .catch (err)->
                 grunt.debug.write err
