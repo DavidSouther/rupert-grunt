@@ -1,2 +1,4 @@
 global.root = __dirname;
-require('rupert')(require('package.json')).start();
+var config = require('./server.json');
+config.name = require('./package.json').name;
+require('rupert')(config).start();
