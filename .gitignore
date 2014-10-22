@@ -19,3 +19,4 @@ node_modules/
 plugins/
 platform/
 www/
+npm-debug.log
