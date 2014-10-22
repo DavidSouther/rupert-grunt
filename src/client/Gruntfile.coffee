@@ -58,7 +58,7 @@ module.exports = (grunt, config)->
                         'www/application.js'
 
                         'node_modules/rupert-grunt/node_modules/' +
-                            'angular-builds/angular-mocks.js'
+                            'angular-mocks/angular-mocks.js'
                         'node_modules/rupert-grunt/node_modules/' +
                             'mockasing/src/tools/*'
 
