@@ -6,6 +6,7 @@ module.exports = (grunt, config)->
             server:
                 options:
                     reporter: 'spec'
+                    require: './node_modules/rupert-grunt/src/server/helpers.js'
                 src: testFiles
         notify:
             linting:
