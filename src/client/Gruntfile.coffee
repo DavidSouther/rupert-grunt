@@ -115,8 +115,8 @@ module.exports = (grunt, config)->
                 process.env.NODE_TLS_REJECT_UNAUTHORIZED = null
                 done pass
 
-        require(config.server)
-        setTimeout writeFiles, 4000
+        base = require(config.server)
+        base.start -> base.app.stassets.promise.then writeFiles
 
     grunt.registerTask 'watchClient',
         [

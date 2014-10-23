@@ -1,5 +1,7 @@
 module.exports = (grunt, config)->
-    features = grunt.expandFileArg 'src/features/integration/users', '**/', '*'
+    features = grunt.expandFileArg(
+      process.cwd() + '/src/features/', '**/', '*.feature'
+    )
 
     process.env.SELENIUM_BROWSER = process.env.SELENIUM_BROWSER || 'chrome'
 
@@ -50,7 +52,7 @@ module.exports = (grunt, config)->
                             'Google Nexus 7'
                         ]
             options:
-                steps: 'src/features/integration/steps'
+                steps: process.cwd() + '/src/features/steps'
                 format: 'pretty'
                 project: require('../../package').name
                 version: require('../../package').version + '-next'
@@ -64,9 +66,13 @@ module.exports = (grunt, config)->
     grunt.registerTask 'client-server-launch', ->
         done = @async()
         process.argv = (config.argv or 'node app.js').split ' '
-        require(config.server)
-        process.env.APP_ROOT = config.app_root or process.env.APP_URL
-        setTimeout done, 5e3
+        app = require(config.server)
+        app.start ->
+            process.env.APP_ROOT = config.app_root or
+                process.env.APP_URL or
+                process.env.HTTP_URL or
+                'http://localhost:8080' # I doth protest, and throw my hands
+            done()
 
     grunt.registerTask 'featuresBrowserstack',
         'Run all feature tests against the full browserstack matrix.',
