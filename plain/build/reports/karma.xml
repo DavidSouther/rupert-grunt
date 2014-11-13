@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 38.0.2125 (Mac OS X 10.10.0)" package="" timestamp="2014-11-13T20:07:01" id="0" hostname="Davids-MacBook-Air.local" tests="1" errors="0" failures="0" time="0.012">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36"/>
+    </properties>
+    <testcase name="has a good title" time="0.012" classname="Chrome 38.0.2125 (Mac OS X 10.10.0).Rupert App Title Service"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

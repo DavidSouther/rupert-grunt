@@ -1,1 +1,3 @@
-angular.module('NAME_ME', []);
+angular.module('rupert-app', [
+    'rupert-app.head-controller'
+]);
