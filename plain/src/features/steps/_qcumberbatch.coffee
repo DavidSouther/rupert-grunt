@@ -2,4 +2,5 @@ mappings = require '../mappings'
 
 steps = ->
 
-module.exports = require('rupert-grunt/steps')(steps, {protractor: yes})
+rupertSteps = require('rupert-grunt/src/features/steps')
+module.exports = rupertSteps(steps, {protractor: yes})
