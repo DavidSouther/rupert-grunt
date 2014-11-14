@@ -7,13 +7,13 @@
     "rename": "echo 'Coming Soon!'"
   },
   "dependencies": {
-    "rupert": "^0.2.0",
+    "rupert": "^0.2.5",
     "rupert-config-angular": "^0.0.3",
-    "rupert-config-bootstrap": "^0.0.1"
+    "rupert-config-bootstrap": "^0.0.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "rupert-grunt": "^0.0.6"
+    "rupert-grunt": "^0.0.14"
   }
 }
