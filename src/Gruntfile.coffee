@@ -22,19 +22,21 @@ module.exports = (grunt, config = {})->
     grunt.Config =
         jshint:
             options:
-                jshintrc: '.jshintrc'
+                jshintrc: config.jshint?.rc or '.jshintrc'
             files: [
                 'src/**/*.js'
+                'Gruntfile.js'
             ].concat(config.jshint?.files or [])
 
         coffeelint:
             options:
-                grunt.file.readJSON '.coffeelintrc'
+                grunt.file.readJSON config.coffeelint?.rc or '.coffeelintrc'
 
             files: [
                 'src/**/*.coffee'
                 'Gruntfile.coffee'
-            ]
+            ].concat(config.coffeelint?.files or [])
+
         clean:
             all:
                 [
@@ -42,6 +44,7 @@ module.exports = (grunt, config = {})->
                     'www/'
                     '*.log'
                 ]
+
     grunt.Config =
         notify:
             linting:

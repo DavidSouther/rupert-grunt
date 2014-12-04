@@ -25,14 +25,14 @@ module.exports = (grunt, config)->
                 ]
 
     # butt - Browser Under Test Tools
-    butt = []
+    butt = config.client?.browsers or []
     unless process.env.DEBUG
         if process.env.BAMBOO
-            butt = ['PhantomJS']
+            butt.push 'PhantomJS'
         else if process.env.TRAVIS
-            butt = ['Firefox']
+            butt.push 'Firefox'
         else
-            butt = ['Chrome']
+            butt.push 'Chrome'
 
     preprocessors =
         'src/client/**/*test.coffee': [ 'coffee' ]
@@ -53,6 +53,7 @@ module.exports = (grunt, config)->
                     logLevel: 'INFO'
                     preprocessors: preprocessors
                     files: [
+                        config.client?.files || []
                         'www/vendors.js'
                         'www/templates.js'
                         'www/application.js'
@@ -76,7 +77,7 @@ module.exports = (grunt, config)->
     grunt.registerTask 'writeClient', ->
         done = @async()
         options = @options
-            dest: './www'
+            dest: config.client?.write?.dest or './www'
             files: [
                 'index.html'
                 'application.js'
@@ -87,7 +88,7 @@ module.exports = (grunt, config)->
                 'all.css'
                 'screen.css'
                 'print.css'
-            ]
+            ].concat (config.client?.write?.files or [])
         options.dest = Path.resolve process.cwd(), options.dest
         getFile = (file)->
             defer = Q.defer()
