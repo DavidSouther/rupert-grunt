@@ -1,6 +1,6 @@
 process.env.LOG_LEVEL = 'error'
 module.exports = (grunt, config)->
-    testFiles = grunt.expandFileArg('src/server', '*/')
+    testFiles = grunt.expandFileArg('src/server', '**/*')
     grunt.Config =
         mochaTest:
             server:
