@@ -7,7 +7,10 @@ module.exports = (grunt, config)->
     flatten = (a, b)-> a.concat b
     prefix = (prefix)-> (str)->"#{prefix}#{str}"
 
-    testFileOrdering = grunt.expandFileArg('src/client', '**/')
+    testFileOrdering = grunt.expandFileArg(
+        config.client?.root or 'src/client/'
+        config.client?.test?.glob or '**/'
+    )
 
     grunt.Config =
         notify:
@@ -40,7 +43,8 @@ module.exports = (grunt, config)->
         'src/client/tools/**/*.coffee': [ 'coffee' ]
 
     if true and (not process.env.DEBUG or process.env.COVER)
-        preprocessors['www/application.js'] = [ 'coverage' ]
+        app = (config.client?.write?.dest or './www') + '/application.js';
+        preprocessors[app] = [ 'coverage' ]
 
     grunt.Config =
         karma:
@@ -54,17 +58,21 @@ module.exports = (grunt, config)->
                     preprocessors: preprocessors
                     files: [
                         config.client?.files || []
-                        'www/vendors.js'
-                        'www/templates.js'
-                        'www/application.js'
+                        [
+                            '/vendors.js'
+                            '/templates.js'
+                            '/application.js'
+                        ].map (_)-> (config.client?.write?.dest or './www') + _
 
                         'node_modules/rupert-grunt/node_modules/' +
                             'angular-mocks/angular-mocks.js'
                         'node_modules/rupert-grunt/node_modules/' +
                             'mockasing/src/tools/*'
 
-                        'src/client/tools/**'
-                        'src/client/**/*mock.coffee'
+                        config.client?.test?.tools || [
+                          'src/client/tools/**'
+                          'src/client/**/*mock.coffee'
+                        ]
 
                         testFileOrdering
                     ].reduce(flatten, [])
@@ -116,8 +124,17 @@ module.exports = (grunt, config)->
                 process.env.NODE_TLS_REJECT_UNAUTHORIZED = null
                 done pass
 
-        base = require(config.server)
-        base.start -> base.app.stassets.promise.then writeFiles
+        try
+            base = require(config.server)
+            base.start().then ->
+              base.app.stassets.promise.then writeFiles
+        catch e
+            # Assume it's already running. TODO look for EACCESS
+            console.log 'Failed to start client'
+            console.log e
+            console.log e.stack
+            process.env.URL = 'localhost:8080' # Next best guess
+            writeFiles()
 
     grunt.registerTask 'watchClient',
         [
@@ -127,7 +144,9 @@ module.exports = (grunt, config)->
     grunt.registerTask 'testClient',
         'Run karma tests against the client.',
         [
+            'logErrors'
             'writeClient'
+            'logDefault'
             'karma:client'
             'notify:client'
         ]
