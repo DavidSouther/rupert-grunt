@@ -5,7 +5,7 @@ rupert development toolchain and library automation utilities. Installing `ruper
 
 ## Changelog
 
-* **0.0.16** *2014-12-11* Reworked watch tasks; fix
+* **0.0.16-17** *2014-12-11* Reworked watch tasks; fix logging.
 * **0.0.15** *2014-11-04* Added plain and `dist`.
 * **0.0.13-14** *2014-11-13* Plain app needs no modification.
 * **0.0.12** *2014-10-23* Mocha and feature helpers.

@@ -84,6 +84,7 @@ module.exports = (grunt, config = {})->
     grunt.file.setBase base
 
     grunt.registerTask 'launchConcurrent', ->
+        done = @async()
         process.argv = (config.argv or 'node app.js').split ' '
         require(config.server).start()
 
