@@ -148,7 +148,6 @@ module.exports = (grunt, config)->
             'writeClient'
             'logDefault'
             'karma:client'
-            'notify:client'
         ]
 
     grunt.registerTask 'client',

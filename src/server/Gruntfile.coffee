@@ -1,4 +1,3 @@
-process.env.LOG_LEVEL = 'error'
 module.exports = (grunt, config)->
     testFiles = grunt.expandFileArg('src/server', '**/*')
     grunt.Config =
@@ -9,18 +8,22 @@ module.exports = (grunt, config)->
                     require: './node_modules/rupert-grunt/src/server/helpers.js'
                 src: testFiles
         notify:
-            linting:
+            server:
                 options:
                     message: 'Server Tests Complete.'
         watch:
             server:
-                files: testFiles
+                files: 'src/server/**/*'
                 tasks: [
                     'testServer'
                     'notify:server'
                 ]
 
-    grunt.registerTask 'testServer', 'Test the server.', ['mochaTest:server']
+    grunt.registerTask 'testServer', 'Test the server.', [
+        'logErrors'
+        'mochaTest:server'
+        'logDefault'
+    ]
 
     grunt.registerTask 'server', 'Prepare the server.', [
         'testServer'

@@ -13,6 +13,7 @@ module.exports = (grunt, config = {})->
         return part(base) unless files
         files.split(',').map (v)-> part(v)
 
+    # Include other grunts.
     [
         './client'
         './server'
@@ -68,9 +69,10 @@ module.exports = (grunt, config = {})->
         #         npm: no
         concurrent:
             watchers: [
-                'watch:lint'
-                'watch:client'
+                'launchConcurrent'
                 'watch:server'
+                'watch:client'
+                'watch:lint'
                 # 'watch:features'
             ]
             options:
@@ -80,6 +82,29 @@ module.exports = (grunt, config = {})->
     grunt.file.setBase base, 'node_modules', 'rupert-grunt'
     grunt.finalize()
     grunt.file.setBase base
+
+    grunt.registerTask 'launchConcurrent', ->
+        process.argv = (config.argv or 'node app.js').split ' '
+        require(config.server).start()
+
+    grunt.registerTask 'launch', ->
+        done = @async()
+        process.argv = (config.argv or 'node app.js').split ' '
+        base = require(config.server)
+        base.start ->
+            base.app.stassets.promise.then ->
+                process.env.APP_ROOT = base.app.url
+                done()
+
+    defaultLogLevel = process.env.LOG_LEVEL
+    grunt.registerTask 'logErrors', ->
+        process.env.LOG_LEVEL = 'error'
+    grunt.registerTask 'logDefault', ->
+        if defaultLogLevel
+            process.env.LOG_LEVEL = defaultLogLevel
+        else
+            delete process.env.LOG_LEVEL
+
 
     grunt.registerTask 'test',
         'Run all non-component tests.',

@@ -63,22 +63,11 @@ module.exports = (grunt, config)->
         'qcumberbatch'
     ]
 
-    grunt.registerTask 'client-server-launch', ->
-        done = @async()
-        process.argv = (config.argv or 'node app.js').split ' '
-        app = require(config.server)
-        app.start ->
-            process.env.APP_ROOT = config.app_root or
-                process.env.APP_URL or
-                process.env.HTTP_URL or
-                'http://localhost:8080' # I doth protest, and throw my hands
-            done()
-
     grunt.registerTask 'featuresBrowserstack',
         'Run all feature tests against the full browserstack matrix.',
         [
             # 'selenium-launch'
-            'client-server-launch'
+            'launch'
             'cucumber:browserstack'
         ]
 
@@ -86,7 +75,7 @@ module.exports = (grunt, config)->
         'Run CucumberJS features tagged @current',
         [
             # 'selenium-launch'
-            'client-server-launch'
+            'launch'
             'cucumber:current'
         ]
 
@@ -94,7 +83,7 @@ module.exports = (grunt, config)->
         'Run all CucumberJS feature tests.',
         [
             # 'selenium-launch'
-            'client-server-launch'
+            'launch'
             'cucumber:current'
             'cucumber:integration'
         ]
