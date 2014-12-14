@@ -5,6 +5,7 @@ rupert development toolchain and library automation utilities. Installing `ruper
 
 ## Changelog
 
+* **0.0.18** *2014-12-13* Plain app uses 2 spaces. Use chai should and provide sinon globally.
 * **0.0.16-17** *2014-12-11* Reworked watch tasks; fix logging.
 * **0.0.15** *2014-11-04* Added plain and `dist`.
 * **0.0.13-14** *2014-11-13* Plain app needs no modification.
