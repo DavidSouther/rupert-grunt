@@ -6,5 +6,5 @@ config.name = require('./package.json').name;
 module.exports = require('rupert')(config); // Export for use by tools
 
 if (require.main === module) {
-    module.exports.start(function(){});
+  module.exports.start(function(){});
 }

@@ -1,8 +1,14 @@
-console.log("In rupert-grunt server helpers.");
 require('coffee-script/register');
-global.should = require("should");
+chai = require('chai');
+global.sinon = require('sinon');
+chai.use(require('sinon-chai'));
+global.should = chai.should();
 
-global.superRupert = function superRupert(route, config){
-    var app = route(require('rupert/src/base'), config);
-    return require('supertest')(app);
+/**
+ * Returns a supertest request with a base Rupert app using the provided route.
+ */
+global.superroute = function superroute(route, config){
+  config = config || {};
+  var app = route(require('rupert/src/base')(config), config);
+  return require('supertest')(app);
 };

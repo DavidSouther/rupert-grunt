@@ -1,16 +1,15 @@
-# Coverage Reports
-coverage/
+# Dependency directory
+node_modules/
+
+# Build Artifacts, Compiled binary addons (http://nodejs.org/api/addons.html)
 build/
+coverage/
+www/
+
+# Environment settings (should come from another repo https://github.com/RupertJS/rupert/wiki/Cookbook:-Providing-Environment-Variables-and-Secure-Files)
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt/
-
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-
-# Dependency directory
-# Commenting this out is preferred by some people, see
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules/
 
 # Users Environment Variables
 .lock-wscript
@@ -18,4 +17,3 @@ node_modules/
 # Cordova prepared files
 plugins/
 platform/
-www/

@@ -1,2 +1,2 @@
 module.exports =
-    'ubiquitous language component': '#selector .forComponent'
+  'ubiquitous language component': '#selector .forComponent'
