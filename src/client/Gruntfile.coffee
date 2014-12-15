@@ -130,9 +130,9 @@ module.exports = (grunt, config)->
         base.app.stassets.promise.then writeFiles
     catch e
       # Assume it's already running. TODO look for EACCESS
-      grunt.log 'Failed to start client'
-      grunt.log e
-      grunt.log e.stack
+      grunt.log.error 'Failed to start client'
+      grunt.log.writeln e
+      grunt.verbose.writeln e.stack
       process.env.URL = 'localhost:8080' # Next best guess
       writeFiles()
 
