@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "rupert": "^0.2.6",
-    "rupert-config-angular": "^0.0.3",
+    "rupert-config-angular": "^0.0.5",
     "rupert-config-bootstrap": "^0.0.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
-    "rupert-grunt": "^0.0.17"
+    "rupert-grunt": "^0.0.18"
   }
 }
