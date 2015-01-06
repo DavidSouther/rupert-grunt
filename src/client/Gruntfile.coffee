@@ -64,11 +64,6 @@ module.exports = (grunt, config)->
               '/application.js'
             ].map (_)-> (config.client?.write?.dest or './www') + _
 
-            'node_modules/rupert-grunt/node_modules/' +
-              'angular-mocks/angular-mocks.js'
-            'node_modules/rupert-grunt/node_modules/' +
-              'mockasing/src/tools/*'
-
             config.client?.test?.tools || [
               'src/client/tools/**'
               'src/client/**/*mock.coffee'
