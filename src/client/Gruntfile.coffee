@@ -65,11 +65,6 @@ module.exports = (grunt, config)->
               'application.js'
             ].map (_)-> "#{writeTarget}/#{_}"
 
-            'node_modules/rupert-grunt/node_modules/' +
-              'angular-mocks/angular-mocks.js'
-            'node_modules/rupert-grunt/node_modules/' +
-              'mockasing/src/tools/*'
-
             config.append('client.test.tools', [
               'src/client/tools/**'
               'src/client/**/*mock.{js,coffee}'
