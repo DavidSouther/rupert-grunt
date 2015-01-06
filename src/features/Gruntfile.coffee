@@ -53,7 +53,7 @@ module.exports = (grunt, config)->
             ]
       options:
           steps: process.cwd() + (
-            config.features?.steps or '/src/features/steps'
+            config.find('features.steps', '/src/features/steps')
           )
           format: 'pretty'
           project: require('../../package').name
