@@ -1,0 +1,18 @@
+{
+  "browser": true,
+  "node": false,
+  "camelcase": false,
+  "eqeqeq": true,
+  "indent": 2,
+  "quotmark": "single",
+  "newcap": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "latedef": "nofunc",
+  "globals": {
+    "__dirname": true,
+    "module": true,
+    "require": true
+  }
+}
