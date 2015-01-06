@@ -1,3 +1,9 @@
-angular.module('rupert-app', [
-  'rupert-app.head-controller'
-]);
+window.onload = function() {
+    //simple routing mechanism
+    switch(window.location.pathname) {
+        case '/':
+            var bar = new window.Foo();
+            bar.setText();
+            break;
+    }
+};

@@ -6,7 +6,10 @@
       "prefix": [],
       "js": [],
       "css": []
-    }
+    },
+    "scripts": {
+      "types": ["*"]
+    },
   },
   "tls": false,
   "routing": [

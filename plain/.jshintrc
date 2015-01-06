@@ -7,11 +7,10 @@
   "quotmark": "single",
   "newcap": true,
   "trailing": true,
-  "undef": true,
-  "unused": true,
+  "undef": false,
+  "unused": false,
   "latedef": true,
   "globals": {
-    "angular": true,
     "__dirname": true,
     "module": true,
     "require": true
