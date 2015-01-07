@@ -28,6 +28,7 @@
     "example": "./plain"
   },
   "devDependencies": {
+    "coffeelint": "^1.8.1",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "rupert": "^0.2.6"

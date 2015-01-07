@@ -52,14 +52,14 @@ module.exports = (grunt, config)->
               'Google Nexus 7'
             ]
       options:
-          steps: process.cwd() + (
-            config.find('features.steps', '/src/features/steps')
-          )
-          format: 'pretty'
-          project: require('../../package').name
-          version: require('../../package').version + '-next'
-          matrix:
-            local: ['chrome']
+        steps: process.cwd() + (
+          config.find('features.steps', '/src/features/steps')
+        )
+        format: 'pretty'
+        project: require('../../package').name
+        version: require('../../package').version + '-next'
+        matrix:
+          local: ['chrome']
 
   grunt.NpmTasks = [
     'qcumberbatch'
