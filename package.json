@@ -4,7 +4,7 @@
   "description": "rupert development toolchain and library.",
   "main": "src/Gruntfile.coffee",
   "scripts": {
-    "test": "for F in vanilla angular ; do cd examples/$F ; pwd ; npm test ; cd - ; done"
+    "test": "sh ./test.sh"
   },
   "repository": {
     "type": "git",
