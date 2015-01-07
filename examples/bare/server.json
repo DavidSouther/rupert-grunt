@@ -1,0 +1,21 @@
+{
+  "stassets": {
+    "root": "./src/client",
+    "scripts": {
+      "types": [
+        "main",
+        "title"
+      ]
+    },
+    "vendors": {
+      "prefix": [],
+      "js": [],
+      "css": []
+    }
+  },
+  "tls": false,
+  "routing": [
+    "./src/server/allow.{js,coffee}",
+    "./src/server/**/*route.{js,coffee}"
+  ]
+}
