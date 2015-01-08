@@ -47,6 +47,13 @@ module.exports = (grunt, config)->
     app = "#{writeTarget}/application.js"
     preprocessors[app] = [ 'coverage' ]
 
+  config.append('client.test.tools', [
+    'tools/**'
+    '**/*mock.{js,coffee}'
+  ])
+
+  config.map('cient.test.tools', (_)-> Path.join config.find('client.root'), _)
+
   grunt.Config =
     karma:
       client:
@@ -58,17 +65,13 @@ module.exports = (grunt, config)->
           logLevel: 'INFO'
           preprocessors: preprocessors
           files: [
-            config.find('client.files', [])
-            [
-              'vendors.js'
-              'templates.js'
-              'application.js'
-            ].map (_)-> "#{writeTarget}/#{_}"
+            config.prepend 'client.files', [
+                'vendors.js'
+                'templates.js'
+                'application.js'
+              ].map (_)-> "#{writeTarget}/#{_}"
 
-            config.append('client.test.tools', [
-              'src/client/tools/**'
-              'src/client/**/*mock.{js,coffee}'
-            ])
+            config.find('client.test.tools')
 
             testFileOrdering
           ].reduce(flatten, [])
@@ -121,7 +124,8 @@ module.exports = (grunt, config)->
         done pass
 
     try
-      base = require(config.find('server'))
+      server = config.find('server', 'APP_SERVER', "#{process.cwd()}/app.js")
+      base = require(server)
       base.start().then ->
         base.app.stassets.promise.then writeFiles
     catch e
