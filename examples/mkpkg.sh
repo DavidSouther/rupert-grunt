@@ -1,7 +1,7 @@
 #!/bin/sh
 
 FILES='.coffeelintrc .gitignore .jshintrc Gruntfile.coffee app.js package.json server.json src'
-MODULES='vanilla angular'
+MODULES='vanilla angular bare'
 
 
 for M in $MODULES ; do
