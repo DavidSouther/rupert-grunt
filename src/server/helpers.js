@@ -8,7 +8,9 @@ global.should = chai.should();
  * Returns a supertest request with a base Rupert app using the provided route.
  */
 global.superroute = function superroute(route, config){
-  config = config || {};
-  var app = route(require('rupert/src/base')(config), config);
+  var Config = require('rupert').Config;
+  config = new Config(config || {});
+  var app = require('rupert/src/base')(config);
+  route(app, config);
   return require('supertest')(app);
 };

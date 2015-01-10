@@ -8,8 +8,8 @@ module.exports = (grunt, config)->
   prefix = (prefix)-> (str)->"#{prefix}#{str}"
 
   testFileOrdering = grunt.expandFileArg(
-    config.client?.root or 'src/client/'
-    config.client?.test?.glob or '**/'
+    config.find('client.root', 'src/client/')
+    config.find('client.test.glob', 'CLIENT_TEST_GLOB', '**/')
   )
 
   grunt.Config =
@@ -28,7 +28,7 @@ module.exports = (grunt, config)->
         ]
 
   # butt - Browser Under Test Tools
-  butt = config.client?.browsers or []
+  butt = config.find('client.browsers', [])
   unless process.env.DEBUG
     if process.env.BAMBOO
       butt.push 'PhantomJS'
@@ -42,9 +42,17 @@ module.exports = (grunt, config)->
     'src/client/**/*mock.coffee': [ 'coffee' ]
     'src/client/tools/**/*.coffee': [ 'coffee' ]
 
+  writeTarget = config.find('client.write.target', 'WRITE_TARGET', './www')
   if true and (not process.env.DEBUG or process.env.COVER)
-    app = (config.client?.write?.dest or './www') + '/application.js';
+    app = "#{writeTarget}/application.js"
     preprocessors[app] = [ 'coverage' ]
+
+  config.append('client.test.tools', [
+    'tools/**'
+    '**/*mock.{js,coffee}'
+  ].map((_)-> Path.join config.find('client.root'), _))
+
+  console.log config.find 'client.test.tools'
 
   grunt.Config =
     karma:
@@ -57,22 +65,13 @@ module.exports = (grunt, config)->
           logLevel: 'INFO'
           preprocessors: preprocessors
           files: [
-            config.client?.files || []
-            [
-              '/vendors.js'
-              '/templates.js'
-              '/application.js'
-            ].map (_)-> (config.client?.write?.dest or './www') + _
+            config.prepend 'client.files', [
+                'vendors.js'
+                'templates.js'
+                'application.js'
+              ].map (_)-> "#{writeTarget}/#{_}"
 
-            'node_modules/rupert-grunt/node_modules/' +
-              'angular-mocks/angular-mocks.js'
-            'node_modules/rupert-grunt/node_modules/' +
-              'mockasing/src/tools/*'
-
-            config.client?.test?.tools || [
-              'src/client/tools/**'
-              'src/client/**/*mock.coffee'
-            ]
+            config.find('client.test.tools')
 
             testFileOrdering
           ].reduce(flatten, [])
@@ -85,8 +84,8 @@ module.exports = (grunt, config)->
   grunt.registerTask 'writeClient', ->
     done = @async()
     options = @options
-      dest: config.client?.write?.dest or './www'
-      files: [
+      dest: writeTarget
+      files: config.prepend 'client.write.files', [
         'index.html'
         'application.js'
         'application.js.map'
@@ -96,7 +95,7 @@ module.exports = (grunt, config)->
         'all.css'
         'screen.css'
         'print.css'
-      ].concat (config.client?.write?.files or [])
+      ]
     options.dest = Path.resolve process.cwd(), options.dest
     getFile = (file)->
       defer = Q.defer()
@@ -125,7 +124,8 @@ module.exports = (grunt, config)->
         done pass
 
     try
-      base = require(config.server)
+      server = config.find('server', 'APP_SERVER', "#{process.cwd()}/app.js")
+      base = require(server)
       base.start().then ->
         base.app.stassets.promise.then writeFiles
     catch e
