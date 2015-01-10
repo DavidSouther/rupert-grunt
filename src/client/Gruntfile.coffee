@@ -52,8 +52,6 @@ module.exports = (grunt, config)->
     '**/*mock.{js,coffee}'
   ].map((_)-> Path.join config.find('client.root'), _))
 
-  console.log config.find 'client.test.tools'
-
   grunt.Config =
     karma:
       client:
