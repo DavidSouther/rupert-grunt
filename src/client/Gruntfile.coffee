@@ -100,7 +100,6 @@ module.exports = (grunt, config)->
     getFile = (file)->
       defer = Q.defer()
       grunt.verbose.writeln "Starting request for #{file}..."
-      debugger
       request.get("#{process.env.URL}#{file}")
       .buffer()
       .end (err, res)->

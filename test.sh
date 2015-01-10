@@ -3,7 +3,7 @@
 
 EXIT=$?
 
-EXAMPLES="vanilla angular"
+EXAMPLES="vanilla angular bare"
 
 npm ln
 for F in $EXAMPLES ; do
