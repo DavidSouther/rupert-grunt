@@ -3,8 +3,7 @@
     "root": "./src/client",
     "scripts": {
       "types": [
-        "main",
-        "title"
+        "main"
       ]
     },
     "vendors": {

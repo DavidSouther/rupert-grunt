@@ -50,9 +50,9 @@ module.exports = (grunt, config)->
   config.append('client.test.tools', [
     'tools/**'
     '**/*mock.{js,coffee}'
-  ])
+  ].map((_)-> Path.join config.find('client.root'), _))
 
-  config.map('cient.test.tools', (_)-> Path.join config.find('client.root'), _)
+  console.log config.find 'client.test.tools'
 
   grunt.Config =
     karma:
@@ -100,6 +100,7 @@ module.exports = (grunt, config)->
     getFile = (file)->
       defer = Q.defer()
       grunt.verbose.writeln "Starting request for #{file}..."
+      debugger
       request.get("#{process.env.URL}#{file}")
       .buffer()
       .end (err, res)->
