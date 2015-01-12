@@ -13,6 +13,9 @@
   "globals": {
     "__dirname": true,
     "module": true,
-    "require": true
+    "require": true,
+    "describe": false,
+    "it": false,
+    "beforeEach": false
   }
 }
