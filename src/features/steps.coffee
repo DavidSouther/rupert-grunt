@@ -4,17 +4,21 @@ global.sinon = require('sinon')
 chai.use(require('sinon-chai'))
 global.should = chai.should()
 
-module.exports = (steps, config)->
+module.exports = (steps, config = {protractor: no})->
   ->
-    require('qcumber')(@)
-    require('qcumberbatch').steps.call(@)
+    unless this.loaded
+      require('qcumber')(@)
+      require('qcumberbatch').steps.call(@)
 
-    if config.protractor
+      @PORT = process.env.PORT or 80
+      @APP = process.env.APPLICATION or ''
+      @ROOT = process.env.APP_ROOT or "http://localhost:#{@PORT}/#{@APP}"
+      process.env.APP_ROOT = @ROOT
+
+      this.loaded = yes
+
+    if config.protractor and !@protractorized
       @protractor = require('protractor').wrapDriver @world.driver
-
-    @PORT = process.env.PORT or 80
-    @APP = process.env.APPLICATION or ''
-    @ROOT = process.env.APP_ROOT or "http://localhost:#{@PORT}/#{@APP}"
-    process.env.APP_ROOT = @ROOT
+      @protractorized = yes
 
     steps.call this

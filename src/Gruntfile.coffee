@@ -144,3 +144,5 @@ module.exports = (grunt, conf)->
   grunt.registerTask 'rupert-default',
     'Perform all Prepare and Test tasks.',
     [ 'base' ]
+
+module.exports.Steps = require('./features/steps')
