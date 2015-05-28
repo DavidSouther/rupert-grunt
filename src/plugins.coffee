@@ -3,7 +3,7 @@ findup = require 'findup-sync'
 debug = require('debug')('rupert-grunt')
 error = require('debug')('rupert-grunt:ERROR')
 
-prefix = require('rupert/src/plugins').PREFIX
+prefix = require('rupert/src/20_plugins').PREFIX
 
 noop = ->
 

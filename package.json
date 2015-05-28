@@ -30,7 +30,8 @@
   "devDependencies": {
     "coffeelint": "^1.8.1",
     "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13"
+    "grunt-cli": "^0.1.13",
+    "rupert": "^0.3.1"
   },
   "dependencies": {
     "angular-mocks": "^1.3.0",
@@ -62,8 +63,7 @@
     "protractor": "^1.3.1",
     "q": "^1.0.1",
     "qcumber": "^0.1.2",
-    "qcumberbatch": "^0.2.2",
-    "rupert": "^0.3.1",
+    "qcumberbatch": "^0.2.3",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.6.0",
     "superagent": "^0.20.0",
