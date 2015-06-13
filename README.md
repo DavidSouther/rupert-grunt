@@ -1,7 +1,7 @@
 rupert-grunt
 =================
 
-rupert development toolchain and library automation utilities. Installing `rupert-grunt` as a `devDependency` and requireing the Gruntfile provides tasks for unit testing the client and server, generating releaseable bundle files, running e2e tests through Cucumber and Protracter, and much more. If you're just getting started, you probably want [Rupert](https://github.com/RupertJS/rupert#rupert) itself.
+rupert development toolchain and library automation utilities. Installing `rupert-grunt` as a `devDependency` and requireing the Gruntfile provides tasks for unit testing the client and server, generating releaseable bundle files, running e2e tests through Cucumber and Protracter, and much more. If you're just getting started, you probably want [Rupert](https://rupertjs.io) itself.
 
 ## Changelog
 
