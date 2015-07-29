@@ -16,6 +16,12 @@
     "require": true,
     "describe": false,
     "it": false,
-    "beforeEach": false
+    "beforeEach": false,
+    "superroute": false,
+    "module": false,
+    "inject": false,
+    "Templates": false,
+    "debug": false,
+    "console": false
   }
 }

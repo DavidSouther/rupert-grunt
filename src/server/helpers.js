@@ -10,7 +10,7 @@ global.should = chai.should();
 global.superroute = function superroute(route, config){
   var Config = require('rupert').Config;
   config = new Config(config || {});
-  var app = require('rupert/src/base')(config);
+  var app = require('rupert/src/15_base')(config);
   route(app, config);
   return require('supertest')(app);
 };

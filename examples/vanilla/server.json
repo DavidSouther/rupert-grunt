@@ -14,8 +14,15 @@
     }
   },
   "tls": false,
-  "routing": [
-    "./src/server/allow.{js,coffee}",
-    "./src/server/**/*route.{js,coffee}"
-  ]
+  "server": {
+    "root": "./src/server",
+    "routing": [
+      "allow",
+      "**/*route"
+    ],
+    "extensions": [
+      "coffee",
+      "js"
+    ]
+  }
 }

@@ -74,7 +74,8 @@ module.exports = (grunt, config)->
             testFileOrdering
           ].reduce(flatten, [])
           junitReporter:
-            outputFile: 'build/reports/karma.xml'
+            outputDir: 'build/reports'
+            outputFile: 'karma.xml'
           coverageReporter:
             type: 'lcov'
             dir: 'build/reports/coverage/'
