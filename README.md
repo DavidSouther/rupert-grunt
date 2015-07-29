@@ -5,6 +5,7 @@ rupert development toolchain and library automation utilities. Installing `ruper
 
 ## Changelog
 
+* **0.1.5** *2015-07-28* Updated package dependencies.
 * **0.1.3** *2015-01-27* Feature steps more forgiving with multiple step files.
 * **0.1.2** *2015-01-09* Update to Rupert Config. Allow Gruntfile Plugins.
 * **0.0.18** *2014-12-13* Plain app uses 2 spaces. Use chai should and provide sinon globally.
